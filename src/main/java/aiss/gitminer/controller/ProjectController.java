@@ -27,12 +27,12 @@ public class ProjectController {
     }
 
     @GetMapping("/{id}")
-    public Project findOne(@PathVariable Long id) throws ProjectNotFoundException {
-        Optional<Project> project = projectRepository.findById(id);
+    public Project findOne(@PathVariable String id) throws ProjectNotFoundException {
+        Optional<Project> project = projectRepository.findById(Long.valueOf(id));
         if (!project.isPresent()) {
             throw new ProjectNotFoundException();
         }
-        return projectRepository.findById(id).get();
+        return project.get();
     }
 
     @PostMapping
