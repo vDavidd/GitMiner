@@ -28,7 +28,7 @@ public class ProjectController {
 
     @GetMapping("/{id}")
     public Project findOne(@PathVariable String id) throws ProjectNotFoundException {
-        Optional<Project> project = projectRepository.findById(Long.valueOf(id));
+        Optional<Project> project = projectRepository.findById(id);
         if (!project.isPresent()) {
             throw new ProjectNotFoundException();
         }
